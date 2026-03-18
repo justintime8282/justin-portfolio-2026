@@ -57,8 +57,9 @@ export default function Home() {
                 height: "100vh",
                 overflowY: "scroll",
                 overflowX: "hidden",
-                scrollSnapType: "y proximity",
+                scrollSnapType: "y mandatory",
                 scrollBehavior: "smooth",
+                scrollPaddingTop: 72,
               }}
             >
               <PortfolioContent containerRef={containerRef} activeSection={activeSection} />
