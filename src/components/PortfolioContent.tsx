@@ -245,7 +245,7 @@ const achievements = [
   {
     icon: <PixelTennis />,
     title: "Racket Sports Enthusiast",
-    badge: "Ace Achievement",
+    badge: "Social Achievement",
     description:
       "Annual US Open attendee (as a spectator) · Hosted 50+ tennis club events in NYC over two years · Love all racket sports — table tennis, golf, badminton, but not pickleball",
     color: "#60a5fa",
@@ -619,7 +619,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                   ▶ AI Stack
                 </div>
                 <p className="text-lg text-gray-400">
-                  ChatGPT &bull; Gemini &bull; Claude &bull; NotebookLM
+                  ChatGPT &bull; Gemini &bull; Claude &bull; NotebookLM &bull; Gamma &bull; Gumloop &bull; Granola
                 </p>
               </div>
             </motion.div>
