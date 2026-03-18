@@ -56,6 +56,7 @@ export default function Home() {
               style={{
                 height: "100vh",
                 overflowY: "scroll",
+                overflowX: "hidden",
                 scrollSnapType: "y proximity",
                 scrollBehavior: "smooth",
               }}

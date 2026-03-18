@@ -356,7 +356,7 @@ function CopyEmailButton() {
       <motion.button
         onClick={handleCopy}
         whileTap={{ scale: 0.96 }}
-        className="pixel-border inline-flex items-center gap-3 bg-pixel-blue px-8 py-4 text-2xl text-black transition-transform hover:scale-105"
+        className="pixel-border inline-flex items-center gap-2 md:gap-3 bg-pixel-blue px-4 py-3 md:px-8 md:py-4 text-base md:text-2xl text-black transition-transform hover:scale-105"
       >
         {EMAIL}
         <CopyIcon copied={copied} />
@@ -391,7 +391,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
         id="home"
         containerRef={containerRef}
         initialInView
-        className="flex min-h-screen flex-col items-center justify-center px-6 pt-20 text-center"
+        className="flex min-h-screen flex-col items-center justify-center px-4 md:px-6 pt-20 text-center"
       >
         {/* Big Ash — lives in the flex column so gap to name is layout-stable */}
         <div style={{ marginBottom: 16, position: "relative", display: "inline-block" }}>
@@ -511,7 +511,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
       <FocusSection
         id="about"
         containerRef={containerRef}
-        className="flex min-h-screen flex-col justify-center px-6 py-20"
+        className="flex min-h-screen flex-col justify-center px-4 md:px-6 py-12 md:py-20"
       >
         <div className="mx-auto w-full max-w-6xl">
           <motion.h2
@@ -534,9 +534,9 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
             viewport={{ once: false, amount: 0.1 }}
             custom={1}
           >
-            <div className="flex gap-8 items-center">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
               {/* Profile photo */}
-              <div className="pixel-border flex-shrink-0 overflow-hidden" style={{ width: 140, height: 160 }}>
+              <div className="pixel-border flex-shrink-0 overflow-hidden mx-auto md:mx-0" style={{ width: 140, height: 160 }}>
                 <Image
                   src="/Profile.jpg"
                   alt="Justin Chun"
@@ -631,7 +631,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
       <FocusSection
         id="projects"
         containerRef={containerRef}
-        className="flex min-h-screen flex-col justify-center px-6 py-20"
+        className="flex min-h-screen flex-col justify-center px-4 md:px-6 py-12 md:py-20"
       >
         <div className="mx-auto w-full max-w-5xl">
           <motion.h2
@@ -701,7 +701,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
       <FocusSection
         id="funfacts"
         containerRef={containerRef}
-        className="flex min-h-screen flex-col justify-center px-6 py-20"
+        className="flex min-h-screen flex-col justify-center px-4 md:px-6 py-12 md:py-20"
       >
         <div className="mx-auto w-full max-w-4xl">
           <motion.h2
@@ -772,7 +772,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
       <FocusSection
         id="contact"
         containerRef={containerRef}
-        className="flex min-h-screen flex-col items-center justify-center px-6 text-center"
+        className="flex min-h-screen flex-col items-center justify-center px-4 md:px-6 text-center"
       >
         <motion.h2
           className="mb-6 text-5xl text-pixel-blue"

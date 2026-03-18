@@ -29,7 +29,7 @@ export default function VerticalNav({ activeSection, containerRef }: Props) {
   };
 
   return (
-    <nav className="fixed right-5 top-1/2 z-40 -translate-y-1/2 flex flex-col items-end gap-4 font-pixel">
+    <nav className="max-lg:hidden fixed right-5 top-1/2 z-40 -translate-y-1/2 flex flex-col items-end gap-4 font-pixel">
       {NAV_ITEMS.map((item) => {
         const isActive = activeSection === item.id;
         return (
