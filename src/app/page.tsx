@@ -22,7 +22,7 @@ export default function Home() {
   // Mobile (<1024px) uses mandatory — prevents section skipping on swipe.
   useEffect(() => {
     const update = () =>
-      setSnapType(window.innerWidth >= 1024 ? "y proximity" : "y mandatory");
+      setSnapType(window.innerWidth >= 1024 ? "none" : "y mandatory");
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
