@@ -5,6 +5,22 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const VIDEO_ID = "6CjpgFOOtuI";
 
+// Pixel-art musical note — shown on mobile instead of emoji + text
+function PixelNote({ playing }: { playing: boolean }) {
+  const c = playing ? "#4ade80" : "#888888";
+  return (
+    <svg width="18" height="18" viewBox="0 0 6 6" style={{ imageRendering: "pixelated", display: "block" }}>
+      {/* Stem */}
+      <rect x="1" y="0" width="1" height="5" fill={c} />
+      {/* Beam / flag */}
+      <rect x="2" y="0" width="3" height="1" fill={c} />
+      <rect x="4" y="1" width="1" height="1" fill={c} />
+      {/* Note head */}
+      <rect x="0" y="4" width="2" height="2" fill={c} />
+    </svg>
+  );
+}
+
 export default function Jukebox() {
   const [playing, setPlaying]         = useState(false);
   const [ready, setReady]             = useState(false);
@@ -90,15 +106,18 @@ export default function Jukebox() {
       />
 
       {/* Play / Pause toggle — top left */}
-      <div className="fixed left-3 top-2 lg:left-5 lg:top-[80px] z-40 font-pixel">
+      <div className="fixed left-3 top-[24px] lg:left-5 lg:top-[80px] z-40 font-pixel">
         <motion.button
           onClick={togglePlay}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="pixel-border bg-[#16213e] px-4 py-2 text-lg text-pixel-green"
+          className="pixel-border bg-[#16213e] px-3 py-1 lg:px-4 lg:py-2 text-lg text-pixel-green"
           title={playing ? "Pause music" : "Play music"}
         >
-          {playing ? "🔊 Music" : "🔇 Music"}
+          {/* Mobile: pixel note icon only */}
+          <span className="lg:hidden"><PixelNote playing={playing} /></span>
+          {/* Desktop: emoji + text */}
+          <span className="hidden lg:inline">{playing ? "🔊 Music" : "🔇 Music"}</span>
         </motion.button>
       </div>
 
