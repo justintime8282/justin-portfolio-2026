@@ -117,13 +117,12 @@ export default function Jukebox() {
               scale:   { duration: 0.3 },
               opacity: { duration: 2.4, times: [0, 0.1, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 1], ease: "easeInOut" },
             }}
-            className="font-pixel pixel-border px-8 py-5"
+            className="font-pixel pixel-border px-4 py-3 md:px-8 md:py-5 text-sm md:text-xl max-w-[90vw]"
             style={{
               position: "fixed",
               top: "30%",
               left: "50%",
               zIndex: 50,
-              fontSize: "1.4rem",
               textAlign: "center",
               background: "#d1d5db",
               color: "#374151",

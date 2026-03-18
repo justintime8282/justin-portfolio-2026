@@ -511,7 +511,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
       <FocusSection
         id="about"
         containerRef={containerRef}
-        className="flex min-h-screen flex-col justify-center px-4 md:px-6 py-12 md:py-20"
+        className="flex min-h-screen flex-col justify-center px-4 md:px-6 pt-20 pb-12 md:py-20"
       >
         <div className="mx-auto w-full max-w-6xl">
           <motion.h2
@@ -631,7 +631,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
       <FocusSection
         id="projects"
         containerRef={containerRef}
-        className="flex min-h-screen flex-col justify-center px-4 md:px-6 py-12 md:py-20"
+        className="flex min-h-screen flex-col justify-center px-4 md:px-6 pt-20 pb-12 md:py-20"
       >
         <div className="mx-auto w-full max-w-5xl">
           <motion.h2
@@ -701,7 +701,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
       <FocusSection
         id="funfacts"
         containerRef={containerRef}
-        className="flex min-h-screen flex-col justify-center px-4 md:px-6 py-12 md:py-20"
+        className="flex min-h-screen flex-col justify-center px-4 md:px-6 pt-20 pb-12 md:py-20"
       >
         <div className="mx-auto w-full max-w-4xl">
           <motion.h2
@@ -758,7 +758,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                   </div>
 
                   <div>
-                    <h3 className="mb-1 text-2xl text-white">{a.title}</h3>
+                    <h3 className="mb-1 text-2xl text-white" style={{ wordBreak: "keep-all" }}>{a.title}</h3>
                     <p className="text-lg leading-7 text-gray-400">{a.description}</p>
                   </div>
                 </div>

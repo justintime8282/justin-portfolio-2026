@@ -29,7 +29,7 @@ export default function VerticalNav({ activeSection, containerRef }: Props) {
   };
 
   return (
-    <nav className="max-lg:hidden fixed right-5 top-1/2 z-40 -translate-y-1/2 flex flex-col items-end gap-4 font-pixel">
+    <nav className="fixed left-2 lg:left-auto lg:right-5 top-1/2 z-40 -translate-y-1/2 flex flex-col items-start lg:items-end gap-3 lg:gap-4 font-pixel">
       {NAV_ITEMS.map((item) => {
         const isActive = activeSection === item.id;
         return (
@@ -45,7 +45,7 @@ export default function VerticalNav({ activeSection, containerRef }: Props) {
                 x: isActive ? 0 : 10,
               }}
               transition={{ duration: 0.3 }}
-              className="text-sm tracking-widest uppercase"
+              className="hidden lg:inline text-sm tracking-widest uppercase"
               style={{
                 color: isActive ? item.color : "#888",
                 textShadow: isActive ? `0 0 10px ${item.color}` : "none",
