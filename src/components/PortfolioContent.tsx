@@ -792,7 +792,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
           viewport={{ once: false, amount: 0.1 }}
           custom={1}
         >
-          Have a strategy challenge or want to team up?<br />Send a message and let&apos;s talk!
+          Have a strategy challenge<br className="md:hidden" /> or want to team up?<br />Send a message and let&apos;s talk!
         </motion.p>
         <motion.div
           variants={fadeUp}
