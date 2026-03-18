@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import PasswordScreen from "@/components/PasswordScreen";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -16,6 +16,17 @@ export default function Home() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [snapType, setSnapType] = useState<string>("y mandatory");
+
+  // Desktop (≥1024px) uses proximity — feels natural with mouse scroll.
+  // Mobile (<1024px) uses mandatory — prevents section skipping on swipe.
+  useEffect(() => {
+    const update = () =>
+      setSnapType(window.innerWidth >= 1024 ? "y proximity" : "y mandatory");
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   // Pass !loading so the observer only attaches once the container & sections
   // are in the DOM — fixing the "always stuck on Home" bug.
@@ -57,7 +68,7 @@ export default function Home() {
                 height: "100vh",
                 overflowY: "scroll",
                 overflowX: "hidden",
-                scrollSnapType: "y mandatory",
+                scrollSnapType: snapType,
                 scrollBehavior: "smooth",
                 scrollPaddingTop: 72,
               }}
