@@ -9,8 +9,30 @@ const vt323 = VT323({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Minecraft x Pokémon",
-  description: "A pixelated portfolio adventure — gotta code 'em all!",
+  title: "Justin's Pokémon Journey Portfolio",
+  description: "A pixel-art adventure through my career and side quests.",
+  metadataBase: new URL("https://justin-portfolio-2026-psi.vercel.app"),
+  openGraph: {
+    title: "Justin's Pokémon Journey Portfolio",
+    description: "A pixel-art adventure through my career and side quests.",
+    url: "https://justin-portfolio-2026-psi.vercel.app",
+    siteName: "Justin's Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Justin's Pokémon Journey Portfolio — pixel-art landing page",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Justin's Pokémon Journey Portfolio",
+    description: "A pixel-art adventure through my career and side quests.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
