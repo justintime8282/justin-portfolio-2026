@@ -24,7 +24,7 @@ export default function FocusSection({
 
   const isInView = useInView(ref as React.RefObject<Element>, {
     once: false,
-    amount: 0.3,
+    amount: 0.05,
     root: containerRef,
   });
 
@@ -42,7 +42,7 @@ export default function FocusSection({
       }}
       initial={{ opacity: initialInView ? 1 : 0.08 }}
       animate={{ opacity: isInView ? 1 : 0.08 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      transition={{ duration: 0.25, ease: "easeInOut" }}
     >
       {children}
     </motion.section>
