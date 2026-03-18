@@ -90,7 +90,7 @@ export default function Jukebox() {
       />
 
       {/* Play / Pause toggle — top left */}
-      <div className="fixed left-5 z-40 font-pixel" style={{ top: 80 }}>
+      <div className="fixed left-3 top-2 lg:left-5 lg:top-[80px] z-40 font-pixel">
         <motion.button
           onClick={togglePlay}
           whileHover={{ scale: 1.1 }}
