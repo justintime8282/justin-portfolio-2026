@@ -33,6 +33,22 @@ body {
   color: var(--foreground);
   font-family: var(--font-vt323), monospace;
   image-rendering: pixelated;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Cross-browser pixel-art rendering for all SVG sprites */
+svg {
+  image-rendering: -webkit-optimize-contrast; /* Safari ≤15 */
+  image-rendering: crisp-edges;               /* Firefox */
+  image-rendering: pixelated;                 /* Chrome / modern */
+}
+
+/* Force GPU compositing on animated sections to prevent WebView blur */
+section {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Pixelated scrollbar */

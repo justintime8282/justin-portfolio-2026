@@ -666,6 +666,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.1 }}
                 custom={i + 2}
+                style={{ willChange: "transform, opacity", backfaceVisibility: "hidden" }}
               >
                 {/* Quest header */}
                 <div className="mb-1 flex items-center gap-3">

@@ -33,7 +33,13 @@ export default function FocusSection({
       ref={ref}
       id={id}
       className={className}
-      style={{ scrollSnapAlign: "start", scrollSnapStop: "always" }}
+      style={{
+        scrollSnapAlign: "start",
+        scrollSnapStop: "always",
+        willChange: "opacity",
+        WebkitBackfaceVisibility: "hidden",
+        backfaceVisibility: "hidden",
+      }}
       initial={{ opacity: initialInView ? 1 : 0.08 }}
       animate={{ opacity: isInView ? 1 : 0.08 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
