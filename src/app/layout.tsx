@@ -9,28 +9,28 @@ const vt323 = VT323({
 });
 
 export const metadata: Metadata = {
-  title: "Justin's Pokémon Journey Portfolio",
-  description: "A pixel-art adventure through my career and side quests.",
+  title: "Justin's Webspace | Career & Adventure",
+  description: "A pixel-art journey through the career and side-quests of Justin Chun, Strategy & Ops professional.",
   metadataBase: new URL("https://justin-portfolio-2026-psi.vercel.app"),
   openGraph: {
-    title: "Justin's Pokémon Journey Portfolio",
-    description: "A pixel-art adventure through my career and side quests.",
+    title: "Justin's Webspace | Career & Adventure",
+    description: "A pixel-art journey through the career and side-quests of Justin Chun, Strategy & Ops professional.",
     url: "https://justin-portfolio-2026-psi.vercel.app",
-    siteName: "Justin's Portfolio",
+    siteName: "Justin's Webspace",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Justin's Pokémon Journey Portfolio — pixel-art landing page",
+        alt: "Justin's Webspace — pixel-art career & adventure portfolio",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Justin's Pokémon Journey Portfolio",
-    description: "A pixel-art adventure through my career and side quests.",
+    title: "Justin's Webspace | Career & Adventure",
+    description: "A pixel-art journey through the career and side-quests of Justin Chun, Strategy & Ops professional.",
     images: ["/og-image.png"],
   },
 };
