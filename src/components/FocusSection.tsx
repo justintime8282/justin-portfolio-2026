@@ -25,6 +25,7 @@ export default function FocusSection({
   const isInView = useInView(ref as React.RefObject<Element>, {
     once: false,
     amount: 0.05,
+    margin: "150px 0px 150px 0px",
     root: containerRef,
   });
 
@@ -40,8 +41,8 @@ export default function FocusSection({
         WebkitBackfaceVisibility: "hidden",
         backfaceVisibility: "hidden",
       }}
-      initial={{ opacity: initialInView ? 1 : 0.08 }}
-      animate={{ opacity: isInView ? 1 : 0.08 }}
+      initial={{ opacity: initialInView ? 1 : 0.7 }}
+      animate={{ opacity: isInView ? 1 : 0.7 }}
       transition={{ duration: 0.25, ease: "easeInOut" }}
     >
       {children}
