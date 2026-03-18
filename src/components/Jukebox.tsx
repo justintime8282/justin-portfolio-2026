@@ -128,9 +128,9 @@ export default function Jukebox() {
               color: "#374151",
             }}
           >
-            <div>Click the top-left button</div>
-            <div>to enjoy some tunes</div>
-            <div>while reading! Enjoy 😊</div>
+            <div className="whitespace-nowrap">Click the top-left button</div>
+            <div className="whitespace-nowrap">to enjoy some tunes</div>
+            <div className="whitespace-nowrap">while reading! Enjoy 😊</div>
             <div style={{ marginTop: "1rem" }}>
               <motion.button
                 onClick={(e) => {
