@@ -5,18 +5,27 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const VIDEO_ID = "6CjpgFOOtuI";
 
-// Pixel-art musical note — shown on mobile instead of emoji + text
+// Pixel-art double musical note (♫) — two eighth notes joined by a thick beam
 function PixelNote({ playing }: { playing: boolean }) {
   const c = playing ? "#4ade80" : "#888888";
+  const px = 3;
+  const grid = [
+    [0,1,1,1,1,1,0,0], // beam row 1 (thick)
+    [0,1,1,1,1,1,0,0], // beam row 2 (thick)
+    [0,1,0,0,0,1,0,0], // stems
+    [0,1,0,0,0,1,0,0], // stems
+    [1,1,1,0,1,1,1,0], // note heads
+    [1,1,1,0,1,1,1,0], // note heads
+  ];
+  const w = grid[0].length * px;
+  const h = grid.length * px;
   return (
-    <svg width="18" height="18" viewBox="0 0 6 6" style={{ imageRendering: "pixelated", display: "block" }}>
-      {/* Stem */}
-      <rect x="1" y="0" width="1" height="5" fill={c} />
-      {/* Beam / flag */}
-      <rect x="2" y="0" width="3" height="1" fill={c} />
-      <rect x="4" y="1" width="1" height="1" fill={c} />
-      {/* Note head */}
-      <rect x="0" y="4" width="2" height="2" fill={c} />
+    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} style={{ imageRendering: "pixelated", display: "block" }}>
+      {grid.map((row, y) =>
+        row.map((v, x) =>
+          v ? <rect key={`${x}-${y}`} x={x*px} y={y*px} width={px} height={px} fill={c} /> : null
+        )
+      )}
     </svg>
   );
 }
@@ -106,7 +115,7 @@ export default function Jukebox() {
       />
 
       {/* Play / Pause toggle — top left */}
-      <div className="fixed left-3 top-[24px] lg:left-5 lg:top-[80px] z-40 font-pixel">
+      <div className="fixed left-3 top-[13px] lg:left-5 lg:top-[80px] z-40 font-pixel">
         <motion.button
           onClick={togglePlay}
           whileHover={{ scale: 1.1 }}
