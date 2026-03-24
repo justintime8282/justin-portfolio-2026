@@ -639,17 +639,15 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               </div>
               <div className="space-y-3">
                 {bgEntries.map((entry) => (
-                  <div key={entry.id} className="flex flex-wrap gap-2">
-                    {[entry.company, entry.role, entry.years].map((label) => (
-                      <button
-                        key={label}
-                        onClick={() => scrollToId(entry.id)}
-                        className="pixel-border bg-[#0a0a1a] px-3 py-1 text-lg transition-opacity hover:opacity-80"
-                        style={{ color: entry.color, borderColor: entry.color }}
-                      >
-                        {label}
-                      </button>
-                    ))}
+                  <div key={entry.id} className="flex items-center gap-3">
+                    <button
+                      onClick={() => scrollToId(entry.id)}
+                      className="pixel-border bg-[#0a0a1a] px-3 py-1 text-lg transition-opacity hover:opacity-80"
+                      style={{ color: entry.color, borderColor: entry.color }}
+                    >
+                      {entry.role} @ {entry.company}
+                    </button>
+                    <span className="text-lg text-gray-500">{entry.years}</span>
                   </div>
                 ))}
                 <div className="mt-2 border-t border-[#333] pt-3 space-y-2 text-lg text-gray-400">
