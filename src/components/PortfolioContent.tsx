@@ -380,8 +380,31 @@ function CopyEmailButton() {
   );
 }
 
+const bgEntries = [
+  { id: "quest-advantive",   company: "Advantive",     role: "RevOps Lead", years: "2025–",       color: "#4ade80" },
+  { id: "quest-eyparthenon", company: "EY-Parthenon",  role: "Director",    years: "2018–2024",   color: "#facc15" },
+  { id: "quest-beebop",      company: "Beebop",        role: "Founder",     years: "In Progress", color: "#FFA500" },
+];
+
+const factEntries = [
+  { id: "fact-0", label: "Running",           color: "#4ade80" },
+  { id: "fact-1", label: "Racket Sports",     color: "#60a5fa" },
+  { id: "fact-2", label: "Hawaii Sabbatical", color: "#facc15" },
+  { id: "fact-3", label: "Military",          color: "#ef4444" },
+];
+
 export default function PortfolioContent({ containerRef, activeSection }: Props) {
   const isHome = activeSection === "home";
+
+  function scrollToId(id: string) {
+    const el = document.getElementById(id);
+    const container = containerRef.current;
+    if (el && container) {
+      const elTop = el.getBoundingClientRect().top;
+      const containerTop = container.getBoundingClientRect().top;
+      container.scrollTo({ top: container.scrollTop + elTop - containerTop - 72, behavior: "smooth" });
+    }
+  }
 
   return (
     <div className="font-pixel">
@@ -574,24 +597,22 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               <div className="mb-4 text-sm uppercase tracking-widest text-pixel-green">
                 ▶ Background
               </div>
-              <ul className="space-y-3 text-lg text-gray-300">
-                <li className="flex gap-3">
-                  <span className="mt-1 text-pixel-green">◆</span>
-                  <span>Rev Ops Lead @ Advantive ($200M+ ARR) · 2025–</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 text-pixel-yellow">◆</span>
-                  <span>Director, Consulting @ EY-Parthenon · 2018–2024</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 text-pixel-yellow">◆</span>
-                  <span>NYU Stern — B.S. Finance &amp; Statistics, 2018</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 text-pixel-yellow">◆</span>
-                  <span>Native fluency in English &amp; Korean · A bit of Mandarin &amp; Japanese</span>
-                </li>
-              </ul>
+              <div className="space-y-3">
+                {bgEntries.map((entry) => (
+                  <div key={entry.id} className="flex flex-wrap gap-2">
+                    {[entry.company, entry.role, entry.years].map((label) => (
+                      <button
+                        key={label}
+                        onClick={() => scrollToId(entry.id)}
+                        className="pixel-border bg-[#0a0a1a] px-3 py-1 text-sm transition-opacity hover:opacity-80"
+                        style={{ color: entry.color, borderColor: entry.color }}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
             <motion.div
@@ -625,6 +646,32 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               </div>
             </motion.div>
           </div>
+
+          {/* Fun Facts teaser */}
+          <motion.div
+            className="mt-6 pixel-border bg-[#16213e] p-6"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            custom={4}
+          >
+            <div className="mb-4 text-sm uppercase tracking-widest text-pixel-green">
+              ▶ Fun Facts
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {factEntries.map((f) => (
+                <button
+                  key={f.id}
+                  onClick={() => scrollToId(f.id)}
+                  className="pixel-border bg-[#0a0a1a] px-3 py-1 text-sm transition-opacity hover:opacity-80"
+                  style={{ color: f.color, borderColor: f.color }}
+                >
+                  {f.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </FocusSection>
 
@@ -661,6 +708,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
             {quests.map((quest, i) => (
               <motion.div
                 key={quest.company}
+                id={`quest-${quest.company.toLowerCase().replace(/[^a-z0-9]/g, "")}`}
                 className="pixel-border bg-[#16213e] p-6"
                 variants={fadeUp}
                 initial="hidden"
@@ -732,6 +780,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
             {achievements.map((a, i) => (
               <motion.div
                 key={a.title}
+                id={`fact-${i}`}
                 className="pixel-border bg-[#0f0f1a] overflow-hidden"
                 variants={fadeUp}
                 initial="hidden"
