@@ -551,10 +551,11 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                   ▶ Profile
                 </div>
                 <p className="text-xl leading-9 text-gray-200">
-                  Hey there! I&apos;m Justin — a Revenue Strategy &amp; Operations
-                  professional who turns complex GTM challenges into measurable wins.
-                  From PE-backed SaaS platforms to global consulting, I build the
-                  systems, models, and strategies that move revenue forward
+                  Hey there! I&apos;m Justin — an AI-driven GTM operator focused on
+                  building systems that turn complex revenue problems into measurable
+                  outcomes. From PE-backed SaaS platforms to M&amp;A integrations,
+                  I design and deploy systems that directly impact pipeline,
+                  forecasting, and revenue growth.
                 </p>
               </div>
             </div>
@@ -602,7 +603,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               custom={3}
             >
               <div className="mb-4 text-sm uppercase tracking-widest text-pixel-green">
-                ▶ Toolkit
+                ▶ Data &amp; Systems
               </div>
               <div className="flex flex-wrap gap-3">
                 {skills.map((skill) => (
@@ -616,10 +617,10 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               </div>
               <div className="mt-4 border-t border-[#333] pt-4">
                 <div className="mb-2 text-sm uppercase tracking-widest text-pixel-blue">
-                  ▶ AI Stack
+                  ▶ AI &amp; Automation
                 </div>
                 <p className="text-lg text-gray-400">
-                  ChatGPT &bull; Gemini &bull; Claude &bull; NotebookLM &bull; Gamma &bull; Gumloop &bull; Granola
+                  ChatGPT &bull; Claude (MCP) &bull; Gemini &bull; Notion &bull; NotebookLM &bull; Gamma
                 </p>
               </div>
             </motion.div>
