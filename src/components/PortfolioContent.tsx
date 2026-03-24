@@ -458,12 +458,20 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
           Justin Chun
         </motion.h1>
         <motion.p
-          className="mb-8 text-2xl text-pixel-yellow md:text-3xl"
+          className="mb-3 text-2xl text-pixel-yellow md:text-3xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Revenue Strategist &amp; Problem Solver
+          AI-Driven GTM Operator
+        </motion.p>
+        <motion.p
+          className="mb-8 text-base text-gray-400 md:text-lg max-w-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          I wire AI and automation into the GTM stack to turn strategy into measurable results.
         </motion.p>
         <motion.div
           className="flex flex-wrap justify-center gap-4"
