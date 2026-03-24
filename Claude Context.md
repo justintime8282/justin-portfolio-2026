@@ -1,5 +1,5 @@
 # Portfolio — Claude Context
-Last updated: 2026-03-18
+Last updated: 2026-03-24
 
 ---
 
@@ -19,7 +19,7 @@ Custom domain: https://justinchun.space
 |---------|--------|
 | Pokéball loading screen (shake → explode → reveal, ~3s total) | ✅ |
 | Password gatekeeper screen (before loading screen) | ✅ |
-| 5-section snap-scroll layout (y mandatory) | ✅ |
+| 5-section snap-scroll layout (mandatory mobile / free desktop) | ✅ |
 | Focus Mode (sections fade 0.7 → 1.0 on scroll) | ✅ |
 | Vertical nav (right side desktop, left side mobile, dots only on mobile) | ✅ |
 | Scroll spy (scroll event + offsetTop math) | ✅ |
@@ -53,16 +53,28 @@ Custom domain: https://justinchun.space
 - **No Spotify** — replaced with YouTube IFrame API (no extra package)
 - Video ID: `6CjpgFOOtuI`
 - Hidden 1×1px iframe, audio only
-- Button: `🔇 Music` / `🔊 Music`, top-left at `top: 80px, left: 5`
-- On page load: blinking callout popup:
+
+### Button — responsive (desktop vs mobile)
+| | Desktop (lg+) | Mobile (< lg) |
+|---|---|---|
+| Position | `left-5 top-[80px]` (below bar) | `left-3 top-[13px]` (centered in 60px character area) |
+| Content | `🔇 Music` / `🔊 Music` emoji + text | `PixelNote` SVG icon only (no text) |
+| Padding | `px-4 py-2` | `px-3 py-1` |
+
+### PixelNote component
+- 8×6 pixel grid — double eighth notes joined by thick 2-row beam (♫ shape)
+- Green (#4ade80) when playing, grey (#888888) when paused/muted
+- Shown mobile only via `<span className="lg:hidden">`, desktop uses `<span className="hidden lg:inline">`
+
+### Callout popup
+- Text (3 lines, each `whitespace-nowrap`):
   ```
   Click the top-left button
   to enjoy some tunes
   while reading! Enjoy 😊
   ```
-  Each line wrapped in `whitespace-nowrap` div to prevent mid-line breaks on mobile
-- Callout: `text-base md:text-xl`, `px-4 py-3 md:px-8 md:py-5`, `max-w-[90vw]`
-- Callout dismisses on first click, scroll, or OK button (ref-guarded, fires once)
+- Style: `text-base md:text-xl`, `px-4 py-3 md:px-8 md:py-5`, `max-w-[90vw]`
+- Dismisses on first click, scroll, or OK button (ref-guarded, fires once)
 - Exit animation: `duration: 0.1` (instant feel)
 
 ---
@@ -211,7 +223,10 @@ Strip background: `#1a1a2e` (opaque — prevents content bleeding through).
 ## Mobile Responsive Layout (all mobile-only unless noted)
 
 ### Scroll Container (page.tsx)
-- `scrollSnapType: "y mandatory"` (was proximity — mandatory prevents skipping sections)
+- **Snap type is viewport-responsive** (JS-driven via `useEffect` + `useState`):
+  - Desktop (≥1024px): `"none"` — free scroll, no snapping (original desktop feel)
+  - Mobile (<1024px): `"y mandatory"` — always locks to nearest section on swipe
+  - Updates on window resize too
 - `scrollPaddingTop: 72` (offsets snap to clear the 72px fixed walking party bar)
 - `overflowX: "hidden"` (prevents horizontal bleed from absolute-positioned bubble)
 
@@ -248,7 +263,7 @@ Strip background: `#1a1a2e` (opaque — prevents content bleeding through).
 
 ## Design Decisions & Rules (important — don't break these)
 
-1. **Scroll architecture**: `containerRef` div in page.tsx owns scroll. `overflowY: scroll`, `scrollSnapType: y mandatory`, `scrollPaddingTop: 72`. `html, body { overflow: hidden }` prevents double scrollbar.
+1. **Scroll architecture**: `containerRef` div in page.tsx owns scroll. `overflowY: scroll`, snap type is JS-driven (`"none"` desktop / `"y mandatory"` mobile), `scrollPaddingTop: 72`. `html, body { overflow: hidden }` prevents double scrollbar.
 2. **Scroll spy**: Uses scroll events + `offsetTop + offsetHeight/2` math. IntersectionObserver was abandoned (failed on tall sections).
 3. **LoadingScreen**: `onAnimationComplete` ONLY on inner shake div — not outer spring div. Outer div fires too early (~0.5s).
 4. **Nav color sync**: Home=white, About=green (#4ade80), Quest Log=yellow (#facc15), Fun Facts=red (#ef4444), Contact=blue (#60a5fa).
