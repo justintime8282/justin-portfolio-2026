@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import FocusSection from "./FocusSection";
@@ -191,44 +191,54 @@ const quests = [
     company: "Advantive",
     title: "Revenue Strategy & Operations Lead",
     period: "Mar 2025 – Present",
-    summary: "Building scalable revenue infrastructure and GTM strategy across a $200M+ ARR PE-backed SaaS platform.",
+    summary: "Building AI-driven GTM systems across a $200M+ PE-backed SaaS platform",
     color: "#4ade80",
     icon: null,
-    highlights: [
-      "Led revenue strategy and GTM operations across a $200M+ ARR SaaS portfolio",
-      "Built forecasting and data governance infrastructure, improving forecast accuracy from ~70% to 90%+",
-      "Led pricing, packaging, and AI add-on strategy discussions with C-suite and sales leadership",
-      "Developed cross-sell and expansion strategies across acquired product lines, increasing attach rates and improving net revenue retention",
-      "Standardized GTM processes including territory ownership, pipeline governance, and deal desk frameworks",
+    keyWins: [
+      "+25% uplift from AI-driven upsell targeting across 200+ accounts",
+      "$1.6M incremental ARR from cross-sell motion, lifting NRR 105% → 115%",
+      "Forecast accuracy improved from 70% → 90%+ across 20+ acquisitions",
+    ],
+    whatIBuilt: [
+      "LLM-driven workflows to automate pipeline gap detection and follow-ups, reducing manual GTM reporting by 70%",
+      "End-to-end forecasting infrastructure with Salesforce governance, audit systems, and stage-gate reviews",
+      "GTM systems across pricing, packaging, deal desk, and cross-sell execution",
     ],
   },
   {
     company: "EY-Parthenon",
     title: "Director, Consulting",
     period: "Sep 2018 – Aug 2024",
-    summary: "Advised Fortune 500 conglomerates and PEs on growth strategy and value creation across $50M–$1B businesses.",
+    summary: "Solved complex GTM and operating model problems across $50M–$1B businesses",
     color: "#facc15",
     icon: null,
-    highlights: [
-      "Led commercial and operational due diligence across technology and industrial sector investments",
-      "Led commercial and operational due diligence across technology and industrial sector investments",
-      "Designed GTM operating models and integration strategies for post-acquisition value creation",
-      "Built standalone cost structures, TSA frameworks, and capability roadmaps for carve-out situations",
-      "Analyzed market entry strategies including direct, partnership, and channel growth models",
+    keyWins: [
+      "Supported $2B+ in transaction decisions across 20+ PE acquisitions",
+      "Built GTM and operating models to drive post-acquisition growth",
+      "Led cross-functional strategy across sales, pricing, and operations",
+    ],
+    whatIBuilt: [
+      "Market and revenue models to assess growth opportunities and commercial viability",
+      "Operating model blueprints across GTM, org design, and cost structure",
+      "Execution roadmaps for integration, standalone planning, and value creation",
     ],
   },
   {
     company: "BEEBOP",
     title: "Social Platform Founder",
     period: "In Development",
-    summary: "Exploring how technology can enable more spontaneous real-world connections.",
+    summary: "Building a proximity-based social product to enable real-world connections",
     color: "#FFA500",
     icon: null,
-    highlights: [
-      "Leading a cross-functional team (PM, engineering, UX) to build a proximity-based social platform",
-      "Designing proximity-based social triggers and meetup facilitation features that bridge digital connections with real-world interactions",
-      "Conducting user research and interviews with target users to define MVP features and product direction",
-      "Running weekly product sprints to iterate on UX and feature design based on user feedback",
+    keyWins: [
+      "Designed and launched MVP from zero across product, UX, and GTM",
+      "Built core concept around proximity-based social triggers and meetup facilitation",
+      "Led cross-functional execution across product, design, and engineering",
+    ],
+    whatIBuilt: [
+      "Product and GTM strategy from 0→1, including positioning and user flows",
+      "Early-stage user behavior models, retention loops, and adoption hypotheses",
+      "Rapid iteration system driven by user research and feedback cycles",
     ],
   },
 ];
@@ -279,7 +289,6 @@ const skills = [
   "Hyperbound",
   "Google Workspace",
   "Microsoft Office",
-  "Notion",
 ];
 
 // ── Big Ash sprite (large, home-page only) ───────────────────────────────────
@@ -399,6 +408,17 @@ const factEntries = [
 
 export default function PortfolioContent({ containerRef, activeSection }: Props) {
   const isHome = activeSection === "home";
+  const [showClickHint, setShowClickHint] = useState(false);
+  const hintTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (activeSection === "about") {
+      setShowClickHint(true);
+      if (hintTimer.current) clearTimeout(hintTimer.current);
+      hintTimer.current = setTimeout(() => setShowClickHint(false), 3200);
+    }
+    return () => { if (hintTimer.current) clearTimeout(hintTimer.current); };
+  }, [activeSection]);
 
   function scrollToId(id: string) {
     const el = document.getElementById(id);
@@ -598,8 +618,21 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               viewport={{ once: false, amount: 0.1 }}
               custom={2}
             >
-              <div className="mb-4 text-sm uppercase tracking-widest text-pixel-green">
+              <div className="mb-4 flex items-center gap-2 text-sm uppercase tracking-widest text-pixel-green">
                 ▶ Background
+                <AnimatePresence>
+                  {showClickHint && (
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0, 1, 0, 1, 0, 1, 0.8, 0] }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 3, times: [0, 0.1, 0.25, 0.4, 0.55, 0.7, 0.85, 1] }}
+                      style={{ fontSize: "1rem" }}
+                    >
+                      👆
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </div>
               <div className="space-y-3">
                 {bgEntries.map((entry) => (
@@ -664,8 +697,21 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
             viewport={{ once: false, amount: 0.1 }}
             custom={4}
           >
-            <div className="mb-4 text-sm uppercase tracking-widest text-pixel-green">
+            <div className="mb-4 flex items-center gap-2 text-sm uppercase tracking-widest text-pixel-green">
               ▶ Fun Facts
+              <AnimatePresence>
+                {showClickHint && (
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 1, 0, 1, 0, 1, 0.8, 0] }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 3, times: [0, 0.1, 0.25, 0.4, 0.55, 0.7, 0.85, 1] }}
+                    style={{ fontSize: "1rem" }}
+                  >
+                    👆
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </div>
             <div className="flex flex-wrap gap-2">
               {factEntries.map((f) => (
@@ -740,9 +786,21 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 <p className="mb-3 text-sm text-gray-500">{quest.period}</p>
                 <p className="mb-4 text-lg italic text-gray-400">{quest.summary}</p>
 
-                {/* Achievement list */}
+                {/* Key Wins */}
+                <div className="mb-1 text-sm uppercase tracking-widest" style={{ color: quest.color }}>🔥 Key Wins</div>
+                <ul className="mb-4 space-y-2">
+                  {quest.keyWins.map((h, j) => (
+                    <li key={j} className="flex gap-3 text-lg text-gray-300">
+                      <span className="mt-1 shrink-0" style={{ color: quest.color }}>▸</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* What I Built */}
+                <div className="mb-1 text-sm uppercase tracking-widest" style={{ color: quest.color }}>⚙️ What I Built</div>
                 <ul className="space-y-2">
-                  {quest.highlights.map((h, j) => (
+                  {quest.whatIBuilt.map((h, j) => (
                     <li key={j} className="flex gap-3 text-lg text-gray-300">
                       <span className="mt-1 shrink-0" style={{ color: quest.color }}>▸</span>
                       <span>{h}</span>
