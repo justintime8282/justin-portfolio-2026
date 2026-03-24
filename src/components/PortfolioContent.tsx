@@ -616,6 +616,10 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                     ))}
                   </div>
                 ))}
+                <div className="mt-2 border-t border-[#333] pt-3 space-y-2 text-lg text-gray-400">
+                  <div>NYU Stern — B.S. Finance &amp; Statistics, 2018</div>
+                  <div>Native fluency in English &amp; Korean · A bit of Mandarin &amp; Japanese</div>
+                </div>
               </div>
             </motion.div>
 
