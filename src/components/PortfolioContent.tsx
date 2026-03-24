@@ -273,6 +273,10 @@ const skills = [
   "HubSpot",
   "SQL",
   "Tableau",
+  "ZoomInfo",
+  "Outreach",
+  "Glyphic",
+  "Hyperbound",
   "Google Workspace",
   "Microsoft Office",
   "Notion",
@@ -604,7 +608,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                       <button
                         key={label}
                         onClick={() => scrollToId(entry.id)}
-                        className="pixel-border bg-[#0a0a1a] px-3 py-1 text-sm transition-opacity hover:opacity-80"
+                        className="pixel-border bg-[#0a0a1a] px-3 py-1 text-lg transition-opacity hover:opacity-80"
                         style={{ color: entry.color, borderColor: entry.color }}
                       >
                         {label}
@@ -623,26 +627,26 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               viewport={{ once: false, amount: 0.1 }}
               custom={3}
             >
-              <div className="mb-4 text-sm uppercase tracking-widest text-pixel-green">
-                ▶ Data &amp; Systems
+              <div className="mb-2 text-sm uppercase tracking-widest text-pixel-blue">
+                ▶ AI &amp; Automation
               </div>
-              <div className="flex flex-wrap gap-3">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="border-2 border-pixel-green bg-[#0a0a1a] px-3 py-1 text-lg text-pixel-green"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-4 border-t border-[#333] pt-4">
-                <div className="mb-2 text-sm uppercase tracking-widest text-pixel-blue">
-                  ▶ AI &amp; Automation
+              <p className="mb-4 text-lg text-gray-400">
+                ChatGPT &bull; Claude (MCP) &bull; Gemini &bull; Notion &bull; NotebookLM &bull; Gamma
+              </p>
+              <div className="border-t border-[#333] pt-4">
+                <div className="mb-3 text-sm uppercase tracking-widest text-pixel-green">
+                  ▶ Data &amp; Systems
                 </div>
-                <p className="text-lg text-gray-400">
-                  ChatGPT &bull; Claude (MCP) &bull; Gemini &bull; Notion &bull; NotebookLM &bull; Gamma
-                </p>
+                <div className="flex flex-wrap gap-3">
+                  {skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
@@ -664,7 +668,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 <button
                   key={f.id}
                   onClick={() => scrollToId(f.id)}
-                  className="pixel-border bg-[#0a0a1a] px-3 py-1 text-sm transition-opacity hover:opacity-80"
+                  className="pixel-border bg-[#0a0a1a] px-3 py-1 text-lg transition-opacity hover:opacity-80"
                   style={{ color: f.color, borderColor: f.color }}
                 >
                   {f.label}
