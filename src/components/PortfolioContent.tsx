@@ -426,7 +426,10 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
     if (el && container) {
       const elTop = el.getBoundingClientRect().top;
       const containerTop = container.getBoundingClientRect().top;
-      container.scrollTo({ top: container.scrollTop + elTop - containerTop - 72, behavior: "smooth" });
+      const containerH = container.clientHeight;
+      const elH = el.clientHeight;
+      const centeredTop = container.scrollTop + elTop - containerTop - (containerH / 2) + (elH / 2);
+      container.scrollTo({ top: centeredTop, behavior: "smooth" });
     }
   }
 
@@ -763,7 +766,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               <motion.div
                 key={quest.company}
                 id={`quest-${quest.company.toLowerCase().replace(/[^a-z0-9]/g, "")}`}
-                className="pixel-border bg-[#16213e] p-6"
+                className={`pixel-border bg-[#16213e] p-6${i === quests.length - 1 && quests.length % 2 === 1 ? " md:col-span-2 md:mx-auto md:w-1/2" : ""}`}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
@@ -780,10 +783,10 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                   )}
                   <h3 className="text-2xl text-white">{quest.company}</h3>
                 </div>
-                <p className="mb-1 text-lg" style={{ color: quest.color }}>
-                  {quest.title}
-                </p>
-                <p className="mb-3 text-sm text-gray-500">{quest.period}</p>
+                <div className="mb-3 flex items-baseline justify-between gap-2">
+                  <p className="text-lg" style={{ color: quest.color }}>{quest.title}</p>
+                  <p className="shrink-0 text-lg text-gray-500">{quest.period}</p>
+                </div>
                 <p className="mb-4 text-lg italic text-gray-400">{quest.summary}</p>
 
                 {/* Key Wins */}
