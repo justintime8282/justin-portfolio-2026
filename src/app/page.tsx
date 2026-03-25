@@ -69,12 +69,13 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               style={{
-                height: "100vh",
+                height: "calc(100vh - 72px - 28px)",
+                marginTop: 72,
                 overflowY: "scroll",
                 overflowX: "hidden",
                 scrollSnapType: snapType,
                 scrollBehavior: "smooth",
-                scrollPaddingTop: 72,
+                scrollPaddingTop: 0,
                 overscrollBehavior: "none",
               }}
             >
