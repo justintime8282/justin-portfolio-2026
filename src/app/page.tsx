@@ -43,6 +43,9 @@ export default function Home() {
           <>
             <VerticalNav activeSection={activeSection} containerRef={containerRef} />
             <Jukebox />
+            <div style={{ position: "fixed", bottom: 6, left: "50%", transform: "translateX(-50%)", zIndex: 40, fontSize: "0.65rem", color: "#6b7280", whiteSpace: "nowrap", pointerEvents: "none" }}>
+              © {new Date().getFullYear()} Justin Chun. All rights reserved.
+            </div>
             <WalkingParty activeSection={activeSection} />
 
             {/* Mask the scrollbar above the green grass line */}
