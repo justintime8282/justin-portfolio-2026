@@ -43,8 +43,9 @@ export default function Home() {
           <>
             <VerticalNav activeSection={activeSection} containerRef={containerRef} />
             <Jukebox />
-            <div style={{ position: "fixed", bottom: 6, left: "50%", transform: "translateX(-50%)", zIndex: 40, fontSize: "0.65rem", color: "#6b7280", whiteSpace: "nowrap", pointerEvents: "none" }}>
-              © {new Date().getFullYear()} Justin Chun. All rights reserved.
+            {/* Bottom bar — mirrors top walking party bar */}
+            <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: 28, background: "#0f0f1a", zIndex: 40, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
+              <span style={{ fontSize: "0.6rem", color: "#4b5563", letterSpacing: "0.05em" }}>© {new Date().getFullYear()} Justin Chun. All rights reserved.</span>
             </div>
             <WalkingParty activeSection={activeSection} />
 
