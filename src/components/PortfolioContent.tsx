@@ -415,7 +415,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
     if (activeSection === "about") {
       setShowClickHint(true);
       if (hintTimer.current) clearTimeout(hintTimer.current);
-      hintTimer.current = setTimeout(() => setShowClickHint(false), 3200);
+      hintTimer.current = setTimeout(() => setShowClickHint(false), 6400);
     }
     return () => { if (hintTimer.current) clearTimeout(hintTimer.current); };
   }, [activeSection]);
@@ -627,12 +627,13 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                   {showClickHint && (
                     <motion.span
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: [0, 1, 0, 1, 0, 1, 0.8, 0] }}
+                      animate={{ opacity: [0, 1, 0, 1, 0, 1, 0.9, 0.9, 0] }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 3, times: [0, 0.1, 0.25, 0.4, 0.55, 0.7, 0.85, 1] }}
-                      style={{ fontSize: "1rem" }}
+                      transition={{ duration: 6, times: [0, 0.08, 0.2, 0.32, 0.44, 0.56, 0.68, 0.88, 1] }}
+                      className="flex items-center gap-1 text-gray-400 normal-case tracking-normal"
+                      style={{ fontSize: "0.85rem" }}
                     >
-                      👆
+                      👆 Click for more
                     </motion.span>
                   )}
                 </AnimatePresence>
