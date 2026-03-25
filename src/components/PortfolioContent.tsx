@@ -952,13 +952,13 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                       <div
                         key={k}
                         className="pixel-border shrink-0 overflow-hidden"
-                        style={{ width: 140, height: 110, border: `2px solid ${a.color}` }}
+                        style={{ width: 140, height: photo.fit === "contain" ? 180 : 110, border: `2px solid ${a.color}`, background: "#0a0a1a" }}
                       >
                         <Image
                           src={photo.src}
                           alt=""
                           width={140}
-                          height={110}
+                          height={photo.fit === "contain" ? 180 : 110}
                           style={{ objectFit: photo.fit ?? "cover", objectPosition: photo.pos ?? "center", width: "100%", height: "100%" }}
                         />
                       </div>
