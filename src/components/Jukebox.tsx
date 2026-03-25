@@ -136,14 +136,14 @@ export default function Jukebox() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95, x: "-50%" }}
             animate={{
-              opacity: [0, 1, 0.15, 1, 0.15, 1, 0.15, 1, 1],
+              opacity: [0, 1, 0.15, 1, 0.15, 1, 1],
               scale: 1,
               x: "-50%",
             }}
             exit={{ opacity: 0, scale: 0.95, x: "-50%", transition: { duration: 0.1 } }}
             transition={{
               scale:   { duration: 0.3 },
-              opacity: { duration: 2.4, times: [0, 0.08, 0.18, 0.3, 0.42, 0.55, 0.68, 0.78, 1], ease: "easeInOut" },
+              opacity: { duration: 2.4, times: [0, 0.08, 0.22, 0.38, 0.52, 0.68, 1], ease: "easeInOut" },
             }}
             className="font-pixel pixel-border px-4 py-3 md:px-8 md:py-5 text-base md:text-xl max-w-[90vw]"
             style={{
