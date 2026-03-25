@@ -273,7 +273,7 @@ const achievements: { icon: React.ReactNode; title: string; badge: string; descr
     photos: [
       { src: "/fun/racket-usopen.jpg" },
       { src: "/fun/racket-tennis.jpg" },
-      { src: "/fun/sports-golf.jpg", fit: "contain", h: 220 },
+      { src: "/fun/sports-golf.jpg", fit: "contain" },
     ],
   },
   {
