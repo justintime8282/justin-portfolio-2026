@@ -589,7 +589,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
         containerRef={containerRef}
         className="flex min-h-screen flex-col justify-center px-4 md:px-6 pt-20 pb-12 md:py-20"
       >
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="mx-auto w-full max-w-4xl">
           <motion.h2
             className="mb-10 text-center text-4xl text-pixel-green"
             variants={fadeUp}
@@ -879,7 +879,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
         containerRef={containerRef}
         className="flex min-h-screen flex-col justify-center px-4 md:px-6 pt-20 pb-12 md:py-20"
       >
-        <div className="mx-auto w-full max-w-4xl">
+        <div className="mx-auto w-full max-w-3xl">
           <motion.h2
             className="mb-2 text-center text-4xl"
             style={{ color: "#ef4444" }}
