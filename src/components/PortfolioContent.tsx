@@ -226,7 +226,7 @@ const quests = [
   {
     company: "BEEBOP",
     title: "Social Platform Founder",
-    period: "In Development",
+    period: "Since 2025 · Solo dev May 2025 · Full team Nov 2025",
     summary: "Building a proximity-based social product to enable real-world connections",
     color: "#FFA500",
     icon: null,
@@ -396,7 +396,7 @@ function CopyEmailButton() {
 const bgEntries = [
   { id: "quest-advantive",   company: "Advantive",     role: "RevOps Lead", years: "2025–",       color: "#4ade80" },
   { id: "quest-eyparthenon", company: "EY-Parthenon",  role: "Director",    years: "2018–2024",   color: "#facc15" },
-  { id: "quest-beebop",      company: "Beebop",        role: "Founder",     years: "In Progress", color: "#FFA500" },
+  { id: "quest-beebop",      company: "Beebop",        role: "Founder",     years: "Since 2025",  color: "#FFA500" },
 ];
 
 const factEntries = [
@@ -668,9 +668,13 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               <div className="mb-2 text-sm uppercase tracking-widest text-pixel-blue">
                 ▶ AI &amp; Automation
               </div>
-              <p className="mb-4 text-lg text-gray-400">
-                ChatGPT &bull; Claude (MCP) &bull; Gemini &bull; Notion &bull; NotebookLM &bull; Gamma
-              </p>
+              <div className="mb-4 flex flex-wrap gap-3">
+                {["ChatGPT", "Claude (MCP)", "Gemini", "Notion", "NotebookLM", "Gamma"].map((tool) => (
+                  <span key={tool} className="border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300">
+                    {tool}
+                  </span>
+                ))}
+              </div>
               <div className="border-t border-[#333] pt-4">
                 <div className="mb-3 text-sm uppercase tracking-widest text-pixel-green">
                   ▶ Data &amp; Systems
@@ -788,26 +792,38 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 <p className="mb-4 text-lg italic text-gray-400">{quest.summary}</p>
 
                 {/* Key Wins */}
-                <div className="mb-1 text-sm uppercase tracking-widest" style={{ color: quest.color }}>🔥 Key Wins</div>
-                <ul className="mb-4 space-y-2">
-                  {quest.keyWins.map((h, j) => (
-                    <li key={j} className="flex gap-3 text-lg text-gray-300">
-                      <span className="mt-1 shrink-0" style={{ color: quest.color }}>▸</span>
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="mb-4 flex gap-3">
+                  <div className="shrink-0 pt-1">
+                    <span className="pixel-border block px-2 py-1 text-xs uppercase tracking-widest" style={{ color: quest.color, borderColor: quest.color }}>
+                      🔥 Key Wins
+                    </span>
+                  </div>
+                  <ul className="space-y-2">
+                    {quest.keyWins.map((h, j) => (
+                      <li key={j} className="flex gap-3 text-lg text-gray-300">
+                        <span className="mt-1 shrink-0" style={{ color: quest.color }}>▸</span>
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
                 {/* What I Built */}
-                <div className="mb-1 text-sm uppercase tracking-widest" style={{ color: quest.color }}>⚙️ What I Built</div>
-                <ul className="space-y-2">
-                  {quest.whatIBuilt.map((h, j) => (
-                    <li key={j} className="flex gap-3 text-lg text-gray-300">
-                      <span className="mt-1 shrink-0" style={{ color: quest.color }}>▸</span>
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="flex gap-3">
+                  <div className="shrink-0 pt-1">
+                    <span className="pixel-border block px-2 py-1 text-xs uppercase tracking-widest" style={{ color: quest.color, borderColor: quest.color }}>
+                      ⚙️ Built
+                    </span>
+                  </div>
+                  <ul className="space-y-2">
+                    {quest.whatIBuilt.map((h, j) => (
+                      <li key={j} className="flex gap-3 text-lg text-gray-300">
+                        <span className="mt-1 shrink-0" style={{ color: quest.color }}>▸</span>
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             ))}
           </div>
