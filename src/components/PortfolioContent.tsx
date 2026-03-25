@@ -251,6 +251,11 @@ const achievements = [
     description:
       "Half Marathons · Ice Cream Runs · Halloween Runs. If there's a finish line, there's a reason to show up",
     color: "#4ade80",
+    photos: [
+      "/fun/running-nyc-half.jpg",
+      "/fun/running-icecream.jpg",
+      "/fun/running-halloween.jpg",
+    ],
   },
   {
     icon: <PixelTennis />,
@@ -259,6 +264,11 @@ const achievements = [
     description:
       "Annual US Open attendee (as a spectator) · Hosted 50+ tennis club events in NYC over two years · Love all racket sports — table tennis, golf, badminton, but not pickleball",
     color: "#60a5fa",
+    photos: [
+      "/fun/racket-usopen.jpg",
+      "/fun/racket-tabletennis.jpg",
+      "/fun/racket-golf.jpg",
+    ],
   },
   {
     icon: <PixelSun />,
@@ -267,6 +277,10 @@ const achievements = [
     description:
       "Unsustainable, unforgettable — whale watching at sunrise, jumping into the ocean on a whim, and eating poke & sushi until the sun went down. Some chapters weren't meant to last forever",
     color: "#facc15",
+    photos: [
+      "/fun/hawaii-whale.jpg",
+      "/fun/hawaii-snorkel.jpg",
+    ],
   },
   {
     icon: <PixelShield />,
@@ -275,6 +289,10 @@ const achievements = [
     description:
       "Served in the Korean Military as a tactical leader. Awarded the Elite Warrior 특급전사 medal for excellence — the highest individual combat-readiness distinction",
     color: "#ef4444",
+    photos: [
+      "/fun/military-patch.jpg",
+      "/fun/military-troops.jpg",
+    ],
   },
 ];
 
@@ -895,11 +913,39 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                     {a.icon}
                   </div>
 
-                  <div>
-                    <h3 className="mb-1 text-2xl text-white" style={{ wordBreak: "keep-all" }}>{a.title}</h3>
-                    <p className="text-lg leading-7 text-gray-400">{a.description}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="mb-2 text-2xl text-white" style={{ wordBreak: "keep-all" }}>{a.title}</h3>
+                    <ul className="space-y-1">
+                      {a.description.split(" · ").map((line, k) => (
+                        <li key={k} className="flex gap-2 text-lg leading-7 text-gray-400">
+                          <span className="mt-1 shrink-0" style={{ color: a.color }}>▸</span>
+                          <span>{line}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
+
+                {/* Photo strip */}
+                {a.photos && a.photos.length > 0 && (
+                  <div className="flex gap-3 overflow-x-auto px-5 pb-5">
+                    {a.photos.map((src, k) => (
+                      <div
+                        key={k}
+                        className="pixel-border shrink-0 overflow-hidden"
+                        style={{ width: 140, height: 100, border: `2px solid ${a.color}` }}
+                      >
+                        <Image
+                          src={src}
+                          alt=""
+                          width={140}
+                          height={100}
+                          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
