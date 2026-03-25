@@ -247,7 +247,9 @@ const quests = [
   },
 ];
 
-const achievements = [
+type Photo = { src: string; pos?: string; fit?: string; h?: number };
+
+const achievements: { icon: React.ReactNode; title: string; badge: string; description: string; color: string; photos: Photo[] }[] = [
   {
     icon: <PixelRunner />,
     title: "Running Enthusiast",
@@ -271,7 +273,7 @@ const achievements = [
     photos: [
       { src: "/fun/racket-usopen.jpg" },
       { src: "/fun/racket-tennis.jpg" },
-      { src: "/fun/racket-golf.jpg", fit: "contain", h: 220 },
+      { src: "/fun/sports-golf.jpg", fit: "contain", h: 220 },
     ],
   },
   {
