@@ -280,6 +280,7 @@ const achievements = [
     photos: [
       "/fun/hawaii-whale.jpg",
       "/fun/hawaii-snorkel.jpg",
+      "/fun/hawaii-trail.jpg",
     ],
   },
   {
@@ -287,11 +288,12 @@ const achievements = [
     title: "Elite Warrior  특급전사",
     badge: "Rare Achievement",
     description:
-      "Served in the Korean Army as a tactical leader · Earned the Elite Warrior 특급전사 medal — the highest individual combat-readiness distinction · Let's just say I'm more dangerous than I look 😏",
+      "Served in the Korean Army as a tactical leader · Earned the Elite Warrior 특급전사 medal — the highest individual combat-readiness distinction · Attempted eggs sunny side up on a military shovel under questionable conditions — unsanitary, unsuccessful, never again 🍳 · Let's just say I'm more dangerous than I look 😏",
     color: "#ef4444",
     photos: [
       "/fun/military-patch.jpg",
       "/fun/military-troops.jpg",
+      "/fun/military-egg.jpg",
     ],
   },
 ];
@@ -814,10 +816,12 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 {/* Key Wins */}
                 <div className="mb-4 flex gap-3">
                   <div
-                    className="pixel-border w-24 shrink-0 flex items-center justify-center text-center text-xs uppercase tracking-widest px-2"
+                    className="pixel-border w-24 shrink-0 flex flex-col items-center justify-center text-center text-lg uppercase tracking-wide px-2 py-2 leading-tight"
                     style={{ color: quest.color, borderColor: quest.color }}
                   >
-                    🔥 Key Wins
+                    <span>🔥</span>
+                    <span>Key</span>
+                    <span>Wins</span>
                   </div>
                   <ul className="flex-1 space-y-2">
                     {quest.keyWins.map((h, j) => (
@@ -832,10 +836,11 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 {/* What I Built */}
                 <div className="flex gap-3">
                   <div
-                    className="pixel-border w-24 shrink-0 flex items-center justify-center text-center text-xs uppercase tracking-widest px-2"
+                    className="pixel-border w-24 shrink-0 flex flex-col items-center justify-center text-center text-lg uppercase tracking-wide px-2 py-2 leading-tight"
                     style={{ color: quest.color, borderColor: quest.color }}
                   >
-                    ⚙️ Built
+                    <span>⚙️</span>
+                    <span>Built</span>
                   </div>
                   <ul className="flex-1 space-y-2">
                     {quest.whatIBuilt.map((h, j) => (
@@ -928,19 +933,19 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
 
                 {/* Photo strip */}
                 {a.photos && a.photos.length > 0 && (
-                  <div className="flex gap-3 overflow-x-auto px-5 pb-5">
+                  <div className="flex justify-center gap-3 overflow-x-auto px-5 pb-5">
                     {a.photos.map((src, k) => (
                       <div
                         key={k}
-                        className="pixel-border shrink-0 overflow-hidden"
-                        style={{ width: 140, height: 100, border: `2px solid ${a.color}` }}
+                        className="pixel-border shrink-0 overflow-hidden flex items-center justify-center"
+                        style={{ width: 140, height: 110, border: `2px solid ${a.color}`, background: "#0a0a1a" }}
                       >
                         <Image
                           src={src}
                           alt=""
                           width={140}
-                          height={100}
-                          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                          height={110}
+                          style={{ objectFit: "contain", width: "100%", height: "100%" }}
                         />
                       </div>
                     ))}
