@@ -249,7 +249,7 @@ const achievements = [
     title: "Running Enthusiast",
     badge: "Stamina Achievement",
     description:
-      "Half Marathons · Ice Cream Runs · Halloween Runs. If there's a finish line, there's a reason to show up",
+      "Ran half marathons, ice cream runs, and halloween runs · Full marathon? Here I come!",
     color: "#4ade80",
     photos: [
       "/fun/running-nyc-half.jpg",
@@ -262,7 +262,7 @@ const achievements = [
     title: "Racket Sports Enthusiast",
     badge: "Social Achievement",
     description:
-      "Annual US Open attendee (as a spectator) · Hosted 50+ tennis club events in NYC over two years · Love all racket sports — table tennis, golf, badminton, but not pickleball",
+      "Hosted 100+ tennis club events over 2.5 years for 50+ players · Annual US Open attendee — as a passionate spectator · Love all racket sports — table tennis, golf, badminton (but not pickleball)",
     color: "#60a5fa",
     photos: [
       "/fun/racket-usopen.jpg",
@@ -275,7 +275,7 @@ const achievements = [
     title: "Hawaii Sabbatical",
     badge: "Explorer Achievement",
     description:
-      "Unsustainable, unforgettable — whale watching at sunrise, jumping into the ocean on a whim, and eating poke & sushi until the sun went down. Some chapters weren't meant to last forever",
+      "Month-long escape to Honolulu — traded spreadsheets for sunsets · Certified poke & sushi connoisseur and obsessive local restaurant explorer · Whale watching at sunrise, spontaneous ocean dives, and zero regrets",
     color: "#facc15",
     photos: [
       "/fun/hawaii-whale.jpg",
@@ -287,7 +287,7 @@ const achievements = [
     title: "Elite Warrior  특급전사",
     badge: "Rare Achievement",
     description:
-      "Served in the Korean Military as a tactical leader. Awarded the Elite Warrior 특급전사 medal for excellence — the highest individual combat-readiness distinction",
+      "Served in the Korean Army as a tactical leader · Earned the Elite Warrior 특급전사 medal — the highest individual combat-readiness distinction · Let's just say I'm more dangerous than I look 😏",
     color: "#ef4444",
     photos: [
       "/fun/military-patch.jpg",
