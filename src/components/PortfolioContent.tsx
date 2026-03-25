@@ -623,7 +623,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 <p className="text-xl leading-9 text-gray-200">
                   Hey there! I&apos;m Justin — an AI-driven GTM operator focused on
                   building systems that turn complex revenue problems into measurable
-                  outcomes. From PE-backed SaaS platforms to M&amp;A integrations,
+                  outcomes. From scaling SaaS platforms to complex M&amp;A integrations,
                   I design and deploy systems that directly impact pipeline,
                   forecasting, and revenue growth.
                 </p>
