@@ -252,9 +252,9 @@ const achievements = [
       "Ran half marathons, ice cream runs, and halloween runs · Full marathon? Here I come!",
     color: "#4ade80",
     photos: [
-      "/fun/running-nyc-half.jpg",
-      "/fun/running-icecream.jpg",
-      "/fun/running-halloween.jpg",
+      { src: "/fun/running-nyc-half.jpg" },
+      { src: "/fun/running-icecream.jpg" },
+      { src: "/fun/running-halloween.jpg" },
     ],
   },
   {
@@ -265,9 +265,9 @@ const achievements = [
       "Hosted 100+ tennis club events over 2.5 years for 50+ players · Annual US Open attendee — as a passionate spectator · Love all racket sports — table tennis, golf, badminton (but not pickleball)",
     color: "#60a5fa",
     photos: [
-      "/fun/racket-usopen.jpg",
-      "/fun/racket-tabletennis.jpg",
-      "/fun/racket-golf.jpg",
+      { src: "/fun/racket-usopen.jpg" },
+      { src: "/fun/racket-tennis.jpg" },
+      { src: "/fun/racket-golf.jpg", pos: "center top" },
     ],
   },
   {
@@ -278,9 +278,9 @@ const achievements = [
       "Month-long escape to Honolulu — traded spreadsheets for sunsets · Certified poke & sushi connoisseur and obsessive local restaurant explorer · Whale watching at sunrise, spontaneous ocean dives, and zero regrets",
     color: "#facc15",
     photos: [
-      "/fun/hawaii-whale.jpg",
-      "/fun/hawaii-snorkel.jpg",
-      "/fun/hawaii-trail.jpg",
+      { src: "/fun/hawaii-whale.jpg" },
+      { src: "/fun/hawaii-snorkel.jpg", pos: "center 30%" },
+      { src: "/fun/hawaii-trail.jpg" },
     ],
   },
   {
@@ -288,12 +288,12 @@ const achievements = [
     title: "Elite Warrior  특급전사",
     badge: "Rare Achievement",
     description:
-      "Served in the Korean Army as a tactical leader · Earned the Elite Warrior 특급전사 medal — the highest individual combat-readiness distinction · Attempted eggs sunny side up on a military shovel under questionable conditions — unsanitary, unsuccessful, never again 🍳 · Let's just say I'm more dangerous than I look 😏",
+      "Served in the Korean Army — awarded the Elite Warrior 특급전사 medal, the highest individual combat-readiness distinction · Attempted eggs sunny side up on a military shovel under questionable conditions — unsanitary, unsuccessful, never again 🍳",
     color: "#ef4444",
     photos: [
-      "/fun/military-patch.jpg",
-      "/fun/military-troops.jpg",
-      "/fun/military-egg.jpg",
+      { src: "/fun/military-patch.jpg" },
+      { src: "/fun/military-troops.jpg" },
+      { src: "/fun/military-egg.jpg" },
     ],
   },
 ];
@@ -934,18 +934,18 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 {/* Photo strip */}
                 {a.photos && a.photos.length > 0 && (
                   <div className="flex justify-center gap-3 overflow-x-auto px-5 pb-5">
-                    {a.photos.map((src, k) => (
+                    {a.photos.map((photo, k) => (
                       <div
                         key={k}
-                        className="pixel-border shrink-0 overflow-hidden flex items-center justify-center"
-                        style={{ width: 140, height: 110, border: `2px solid ${a.color}`, background: "#0a0a1a" }}
+                        className="pixel-border shrink-0 overflow-hidden"
+                        style={{ width: 140, height: 110, border: `2px solid ${a.color}` }}
                       >
                         <Image
-                          src={src}
+                          src={photo.src}
                           alt=""
                           width={140}
                           height={110}
-                          style={{ objectFit: "contain", width: "100%", height: "100%" }}
+                          style={{ objectFit: "cover", objectPosition: photo.pos ?? "center", width: "100%", height: "100%" }}
                         />
                       </div>
                     ))}
