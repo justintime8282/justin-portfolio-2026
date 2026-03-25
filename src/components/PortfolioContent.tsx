@@ -680,6 +680,39 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                   <div>Native fluency in English &amp; Korean · A bit of Mandarin &amp; Japanese</div>
                 </div>
               </div>
+
+              {/* Fun Facts teaser — inside Background card */}
+              <div className="mt-5 border-t border-[#333] pt-5">
+                <div className="mb-3 flex items-center gap-2 text-sm uppercase tracking-widest text-pixel-green">
+                  ▶ Fun Facts
+                  <AnimatePresence>
+                    {showClickHint && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: [0, 1, 0, 1, 0, 1, 0.9, 0.9, 0] }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 4.5, times: [0, 0.08, 0.2, 0.32, 0.44, 0.56, 0.68, 0.88, 1] }}
+                        className="flex items-center gap-1 text-gray-400 normal-case tracking-normal"
+                        style={{ fontSize: "0.85rem" }}
+                      >
+                        👆 Click for more
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {factEntries.map((f) => (
+                    <button
+                      key={f.id}
+                      onClick={() => scrollToId(f.id)}
+                      className="pixel-border bg-[#0a0a1a] px-3 py-1 text-lg transition-opacity hover:opacity-80"
+                      style={{ color: f.color, borderColor: f.color }}
+                    >
+                      {f.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
@@ -693,70 +726,47 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
               <div className="mb-2 text-sm uppercase tracking-widest text-pixel-blue">
                 ▶ AI &amp; Automation
               </div>
-              <div className="mb-4 flex flex-wrap gap-3">
-                {["ChatGPT", "Claude (MCP)", "Gemini", "Notion", "NotebookLM", "Gamma"].map((tool) => (
-                  <span key={tool} className="border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300">
-                    {tool}
-                  </span>
-                ))}
+              <div className="mb-4 space-y-2">
+                <div className="flex gap-3">
+                  {["ChatGPT", "Claude (MCP)", "Gemini", "Notion"].map((tool) => (
+                    <span key={tool} className="border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  {["NotebookLM", "Gamma"].map((tool) => (
+                    <span key={tool} className="border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
               </div>
               <div className="border-t border-[#333] pt-4">
                 <div className="mb-3 text-sm uppercase tracking-widest text-pixel-green">
                   ▶ Data &amp; Systems
                 </div>
-                <div className="flex flex-wrap gap-3">
-                  {skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                <div className="space-y-2">
+                  <div className="flex gap-3">
+                    {["Salesforce", "HubSpot", "SQL", "Tableau"].map((s) => (
+                      <span key={s} className="border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300">{s}</span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
+                    {["ZoomInfo", "Outreach", "Glyphic", "Hyperbound"].map((s) => (
+                      <span key={s} className="border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300">{s}</span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
+                    {["Google Workspace", "Microsoft Office"].map((s) => (
+                      <span key={s} className="border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300">{s}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Fun Facts teaser */}
-          <motion.div
-            className="mt-6 pixel-border bg-[#16213e] p-6"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
-            custom={4}
-          >
-            <div className="mb-4 flex items-center gap-2 text-sm uppercase tracking-widest text-pixel-green">
-              ▶ Fun Facts
-              <AnimatePresence>
-                {showClickHint && (
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 0, 1, 0, 1, 0.9, 0.9, 0] }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 4.5, times: [0, 0.08, 0.2, 0.32, 0.44, 0.56, 0.68, 0.88, 1] }}
-                    className="flex items-center gap-1 text-gray-400 normal-case tracking-normal"
-                    style={{ fontSize: "0.85rem" }}
-                  >
-                    👆 Click for more
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {factEntries.map((f) => (
-                <button
-                  key={f.id}
-                  onClick={() => scrollToId(f.id)}
-                  className="pixel-border bg-[#0a0a1a] px-3 py-1 text-lg transition-opacity hover:opacity-80"
-                  style={{ color: f.color, borderColor: f.color }}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </FocusSection>
 
