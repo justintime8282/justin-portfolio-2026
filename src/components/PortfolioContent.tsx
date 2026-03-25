@@ -415,7 +415,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
     if (activeSection === "about") {
       setShowClickHint(true);
       if (hintTimer.current) clearTimeout(hintTimer.current);
-      hintTimer.current = setTimeout(() => setShowClickHint(false), 6400);
+      hintTimer.current = setTimeout(() => setShowClickHint(false), 4500);
     }
     return () => { if (hintTimer.current) clearTimeout(hintTimer.current); };
   }, [activeSection]);
@@ -629,7 +629,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                       initial={{ opacity: 0 }}
                       animate={{ opacity: [0, 1, 0, 1, 0, 1, 0.9, 0.9, 0] }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 6, times: [0, 0.08, 0.2, 0.32, 0.44, 0.56, 0.68, 0.88, 1] }}
+                      transition={{ duration: 4.5, times: [0, 0.08, 0.2, 0.32, 0.44, 0.56, 0.68, 0.88, 1] }}
                       className="flex items-center gap-1 text-gray-400 normal-case tracking-normal"
                       style={{ fontSize: "0.85rem" }}
                     >
@@ -709,12 +709,13 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 {showClickHint && (
                   <motion.span
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 0, 1, 0, 1, 0.8, 0] }}
+                    animate={{ opacity: [0, 1, 0, 1, 0, 1, 0.9, 0.9, 0] }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 3, times: [0, 0.1, 0.25, 0.4, 0.55, 0.7, 0.85, 1] }}
-                    style={{ fontSize: "1rem" }}
+                    transition={{ duration: 4.5, times: [0, 0.08, 0.2, 0.32, 0.44, 0.56, 0.68, 0.88, 1] }}
+                    className="flex items-center gap-1 text-gray-400 normal-case tracking-normal"
+                    style={{ fontSize: "0.85rem" }}
                   >
-                    👆
+                    👆 Click for more
                   </motion.span>
                 )}
               </AnimatePresence>
@@ -795,7 +796,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 {/* Key Wins */}
                 <div className="mb-4 flex gap-3">
                   <div
-                    className="pixel-border w-20 shrink-0 flex items-center justify-center text-center text-xs uppercase tracking-widest"
+                    className="pixel-border w-24 shrink-0 flex items-center justify-center text-center text-xs uppercase tracking-widest px-2"
                     style={{ color: quest.color, borderColor: quest.color }}
                   >
                     🔥 Key Wins
@@ -813,7 +814,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                 {/* What I Built */}
                 <div className="flex gap-3">
                   <div
-                    className="pixel-border w-20 shrink-0 flex items-center justify-center text-center text-xs uppercase tracking-widest"
+                    className="pixel-border w-24 shrink-0 flex items-center justify-center text-center text-xs uppercase tracking-widest px-2"
                     style={{ color: quest.color, borderColor: quest.color }}
                   >
                     ⚙️ Built
