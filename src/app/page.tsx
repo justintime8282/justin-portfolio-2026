@@ -75,6 +75,7 @@ export default function Home() {
                 scrollSnapType: snapType,
                 scrollBehavior: "smooth",
                 scrollPaddingTop: 72,
+                overscrollBehavior: "none",
               }}
             >
               <PortfolioContent containerRef={containerRef} activeSection={activeSection} />
