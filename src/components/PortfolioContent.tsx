@@ -785,12 +785,12 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
             Professional achievements unlocked
           </motion.p>
 
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="flex flex-col gap-8">
             {quests.map((quest, i) => (
               <motion.div
                 key={quest.company}
                 id={`quest-${quest.company.toLowerCase().replace(/[^a-z0-9]/g, "")}`}
-                className={`pixel-border bg-[#16213e] p-6${i === quests.length - 1 && quests.length % 2 === 1 ? " md:col-span-2 md:mx-auto md:w-1/2" : ""}`}
+                className="pixel-border bg-[#16213e] p-6"
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
