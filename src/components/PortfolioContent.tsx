@@ -678,8 +678,9 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                   </div>
                 ))}
                 <div className="mt-2 border-t border-[#333] pt-3 space-y-2 text-lg text-gray-400">
-                  <div>NYU Stern — B.S. Finance &amp; Statistics, 2018</div>
-                  <div>Native fluency in English &amp; Korean · A bit of Mandarin &amp; Japanese</div>
+                  <div className="flex items-start gap-2"><span className="shrink-0">■</span><span>NYU Stern — B.S. Finance &amp; Statistics, 2018</span></div>
+                  <div className="flex items-start gap-2"><span className="shrink-0">■</span><span>Native fluency in English &amp; Korean</span></div>
+                  <div className="flex items-start gap-2"><span className="shrink-0">■</span><span>A bit of Mandarin &amp; Japanese</span></div>
                 </div>
               </div>
 
@@ -702,17 +703,31 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                     )}
                   </AnimatePresence>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {factEntries.map((f) => (
-                    <button
-                      key={f.id}
-                      onClick={() => scrollToId(f.id)}
-                      className="pixel-border bg-[#0a0a1a] px-3 py-1 text-lg transition-opacity hover:opacity-80"
-                      style={{ color: f.color, borderColor: f.color }}
-                    >
-                      {f.label}
-                    </button>
-                  ))}
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2">
+                    {factEntries.slice(0, 2).map((f) => (
+                      <button
+                        key={f.id}
+                        onClick={() => scrollToId(f.id)}
+                        className="pixel-border bg-[#0a0a1a] px-3 py-1 text-lg transition-opacity hover:opacity-80"
+                        style={{ color: f.color, borderColor: f.color }}
+                      >
+                        {f.label}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="flex gap-2">
+                    {factEntries.slice(2).map((f) => (
+                      <button
+                        key={f.id}
+                        onClick={() => scrollToId(f.id)}
+                        className="pixel-border bg-[#0a0a1a] px-3 py-1 text-lg transition-opacity hover:opacity-80"
+                        style={{ color: f.color, borderColor: f.color }}
+                      >
+                        {f.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
