@@ -195,14 +195,18 @@ const quests = [
     color: "#4ade80",
     icon: null,
     keyWins: [
-      "+25% uplift from AI-driven upsell targeting across 200+ accounts",
-      "$1.6M incremental ARR from cross-sell motion, lifting NRR 105% → 115%",
-      "Forecast accuracy improved from 70% → 90%+ across 20+ acquisitions",
+      "+25% uplift from AI-driven upsell targeting across 200+ accounts using usage, renewal timing, and support signals",
+      "$1.6M incremental ARR from cross-sell motion, lifting NRR 105% → 115% across a $10M acquired product line",
+      "Forecast accuracy improved from 70% → 90%+ across 20+ acquisitions, sustained for 3+ consecutive quarters",
+      "Recovered ~$1M in pipeline during post-acquisition CRM failure, preserving visibility on top deals",
     ],
     whatIBuilt: [
-      "LLM-driven workflows to automate pipeline gap detection and follow-ups, reducing manual GTM reporting by 70%",
-      "End-to-end forecasting infrastructure with Salesforce governance, audit systems, and stage-gate reviews",
-      "GTM systems across pricing, packaging, deal desk, and cross-sell execution",
+      "LLM-driven workflows to automate pipeline gap detection and follow-up recommendations, reducing manual GTM reporting by 70%",
+      "AI-driven upsell targeting model with sensitivity analysis and go/no-go thresholds aligned with sales leadership",
+      "End-to-end forecasting infrastructure including Salesforce hygiene SOPs, automated audit dashboards, and stage-gate review cadences",
+      "Cross-sell system mapping 150+ accounts by product-fit and renewal timing, embedded into QBR and renewal workflows",
+      "GTM systems across pricing, packaging, deal desk governance, and territory ownership alignment",
+      "Standardized M&A GTM integration playbook covering CRM migration, comp alignment, territory setup, and forecasting",
     ],
   },
   {
@@ -267,7 +271,7 @@ const achievements = [
     photos: [
       { src: "/fun/racket-usopen.jpg" },
       { src: "/fun/racket-tennis.jpg" },
-      { src: "/fun/racket-golf.jpg", pos: "center top" },
+      { src: "/fun/racket-golf.jpg", pos: "center bottom" },
     ],
   },
   {
@@ -762,7 +766,7 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
         containerRef={containerRef}
         className="flex min-h-screen flex-col justify-center px-4 md:px-6 pt-20 pb-12 md:py-20"
       >
-        <div className="mx-auto w-full max-w-5xl">
+        <div className="mx-auto w-full max-w-3xl">
           <motion.h2
             className="mb-4 text-center text-4xl"
             style={{ color: "#facc15" }}
