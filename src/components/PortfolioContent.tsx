@@ -247,7 +247,7 @@ const quests = [
   },
 ];
 
-type Photo = { src: string; pos?: string; fit?: string; h?: number };
+type Photo = { src: string; pos?: string; fit?: React.CSSProperties["objectFit"]; h?: number };
 
 const achievements: { icon: React.ReactNode; title: string; badge: string; description: string; color: string; photos: Photo[] }[] = [
   {
