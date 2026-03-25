@@ -271,7 +271,7 @@ const achievements = [
     photos: [
       { src: "/fun/racket-usopen.jpg" },
       { src: "/fun/racket-tennis.jpg" },
-      { src: "/fun/racket-golf.jpg", fit: "contain" },
+      { src: "/fun/racket-golf.jpg", fit: "contain", h: 220 },
     ],
   },
   {
@@ -952,13 +952,13 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
                       <div
                         key={k}
                         className="pixel-border shrink-0 overflow-hidden"
-                        style={{ width: 140, height: photo.fit === "contain" ? 180 : 110, border: `2px solid ${a.color}`, background: "#0a0a1a" }}
+                        style={{ width: 140, height: photo.h ?? (photo.fit === "contain" ? 180 : 110), border: `2px solid ${a.color}`, background: "#0a0a1a" }}
                       >
                         <Image
                           src={photo.src}
                           alt=""
                           width={140}
-                          height={photo.fit === "contain" ? 180 : 110}
+                          height={photo.h ?? (photo.fit === "contain" ? 180 : 110)}
                           style={{ objectFit: photo.fit ?? "cover", objectPosition: photo.pos ?? "center", width: "100%", height: "100%" }}
                         />
                       </div>

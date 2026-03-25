@@ -1,5 +1,5 @@
 # Portfolio — Claude Context
-Last updated: 2026-03-24
+Last updated: 2026-03-25
 
 ---
 
@@ -24,13 +24,14 @@ Custom domain: https://justinchun.space
 | Vertical nav (right side desktop, left side mobile, dots only on mobile) | ✅ |
 | Scroll spy (scroll event + offsetTop math) | ✅ |
 | Jukebox — YouTube IFrame API, Play/Pause button (top-left) | ✅ |
-| Music callout popup (blinking, dismisses on scroll/click/OK) | ✅ |
+| Music callout popup (blinks twice early, settles solid, dismisses on scroll/click/OK) | ✅ |
 | Copy-to-clipboard email button with toast | ✅ |
 | Walking Party animation (top strip, scroll-triggered party joining) | ✅ |
 | Big Ash on Home — welcome bubble + wiggles + runs left on scroll | ✅ |
 | Profile photo in About Me (left of bio card, stacks on mobile) | ✅ |
-| Resume content (Advantive, EY-Parthenon, BEEBOP) | ✅ |
-| Fun Facts "Achievement Unlocked" cards (4 achievements) | ✅ |
+| Interactive About Me (clickable Background + Fun Facts tags → scroll to section) | ✅ |
+| Quest Log — single column, Key Wins / What I Built structure | ✅ |
+| Fun Facts cards with bullet descriptions + photo strips | ✅ |
 | Pixel art SVG sprites and icons throughout | ✅ |
 | Scrollbar mask (hides scrollbar above green grass line) | ✅ |
 | Mobile responsive layout | ✅ |
@@ -74,6 +75,8 @@ Custom domain: https://justinchun.space
   while reading! Enjoy 😊
   ```
 - Style: `text-base md:text-xl`, `px-4 py-3 md:px-8 md:py-5`, `max-w-[90vw]`
+- Blink animation: blinks **twice** immediately after appearing, then settles solid
+  - `opacity: [0, 1, 0.15, 1, 0.15, 1, 1]`, `times: [0, 0.08, 0.22, 0.38, 0.52, 0.68, 1]`, `duration: 2.4`
 - Dismisses on first click, scroll, or OK button (ref-guarded, fires once)
 - Exit animation: `duration: 0.1` (instant feel)
 
@@ -163,7 +166,7 @@ Strip background: `#1a1a2e` (opaque — prevents content bleeding through).
 ### Home
 - Big Ash sprite with welcome bubble above name, exits left on scroll
 - Name: Justin Chun (white, large)
-- Subtitle: "Revenue Strategist & Problem Solver"
+- Subtitle: **"AI-Driven GTM Operator"** (yellow, `text-2xl md:text-3xl`)
 - Buttons: About Me (green), Quest Log (yellow), Fun Facts (orange), Contact Me (blue)
 
 ### About Me
@@ -171,44 +174,97 @@ Strip background: `#1a1a2e` (opaque — prevents content bleeding through).
 - Profile photo: `public/Profile.jpg` (capital P — case-sensitive for Vercel Linux build)
   - Left of bio card on desktop (`md:flex-row`), centered above text on mobile (`flex-col`)
   - 140×160px with pixel-border, `mx-auto md:mx-0`
-- Bio text: "Revenue Strategy & Operations professional who turns complex GTM challenges into measurable wins."
-- Background: Advantive · EY-Parthenon · NYU Stern · "Native fluency in English & Korean · A bit of Mandarin & Japanese"
-- Toolkit: Salesforce, HubSpot, SQL, Tableau, Google Workspace, Microsoft Office, Notion
-- AI Stack: ChatGPT · Gemini · Claude · NotebookLM · Gamma · Gumloop · Granola
+- **Bio text**: "Hey there! I'm Justin — an AI-driven GTM operator focused on building systems that turn complex revenue problems into measurable outcomes. From scaling SaaS platforms to complex M&A integrations, I design and deploy systems that directly impact pipeline, forecasting, and revenue growth."
+
+#### Two-column grid below bio card:
+
+**Left column — Background card** (contains Background + Fun Facts teaser)
+- `▶ Background` label with `👆 Click for more` hint (appears on About Me visit, 4.5s, blinks 3x then fades)
+- Clickable buttons: `[Role @ Company]` + plain year text
+  - `[RevOps Lead @ Advantive]  2025–` (green)
+  - `[Director @ EY-Parthenon]  2018–2024` (yellow)
+  - `[Founder @ Beebop]  2025–` (orange)
+- Plain text below divider: NYU Stern · English/Korean/Mandarin/Japanese
+- `▶ Fun Facts` section (inside same card, below divider) with same hint
+  - `[Running]` (green) `[Racket Sports]` (blue) `[Hawaii Sabbatical]` (yellow) `[Military]` (red)
+- Clicking any button calls `scrollToId()` using `getBoundingClientRect` to center target in viewport
+
+**Right column — Tools card**
+- `▶ AI & Automation` (blue label):
+  - Row 1: ChatGPT · Claude (MCP) · Gemini · Notion
+  - Row 2: NotebookLM · Gamma
+- Divider
+- `▶ Data & Systems` (green label):
+  - Row 1: Salesforce · HubSpot · SQL · Tableau
+  - Row 2: ZoomInfo · Outreach · Glyphic · Hyperbound
+  - Row 3: Google Workspace · Microsoft Office
+- All tiles: `border-2 border-gray-500 bg-[#0a0a1a] px-3 py-1 text-lg text-gray-300`
 
 ### Quest Log
+- Single column layout (`flex flex-col gap-8`), `max-w-3xl` container
+- **Card structure** (all 3 cards identical):
+  - Company name + dot icon
+  - Title (colored) + Period (right-aligned, same row, `justify-between`)
+  - Italic 1-line summary
+  - `🔥 / Key / Wins` label box (left) + bullet list (right) — `w-24 flex-col items-center`
+  - `⚙️ / Built` label box (left) + bullet list (right)
+  - Label boxes: `text-lg uppercase`, color-bordered, stretch full height of bullet list
+- Cards scroll-targeted from About Me via `id="quest-advantive"` / `"quest-eyparthenon"` / `"quest-beebop"`
+
 **Advantive** (green) — Revenue Strategy & Operations Lead · Mar 2025–Present
-- "Building scalable revenue infrastructure and GTM strategy across a $200M+ ARR PE-backed SaaS platform."
-- Led revenue strategy and GTM operations across a $200M+ ARR SaaS portfolio
-- Built forecasting and data governance infrastructure, improving forecast accuracy from ~70% to 90%+
-- Led pricing, packaging, and AI add-on strategy discussions with C-suite and sales leadership
-- Developed cross-sell and expansion strategies across acquired product lines, increasing attach rates and improving net revenue retention
-- Standardized GTM processes including territory ownership, pipeline governance, and deal desk frameworks
+- Summary: "Building AI-driven GTM systems across a $200M+ PE-backed SaaS platform"
+- Key Wins (4 bullets): upsell targeting +25%, $1.6M ARR cross-sell NRR 105%→115%, forecast 70%→90%+ sustained 3Q, ~$1M pipeline recovery
+- What I Built (6 bullets): LLM pipeline gap workflows, upsell targeting model, forecasting infrastructure, cross-sell system 150+ accounts, GTM systems, M&A integration playbook
 
 **EY-Parthenon** (yellow) — Director, Consulting · Sep 2018–Aug 2024
-- "Advised Fortune 500 conglomerates and PEs on growth strategy and value creation across $50M–$1B businesses."
-- Led commercial and operational due diligence across technology and industrial sector investments
-- Designed GTM operating models and integration strategies for post-acquisition value creation
-- Built standalone cost structures, TSA frameworks, and capability roadmaps for carve-out situations
-- Analyzed market entry strategies including direct, partnership, and channel growth models
+- Summary: "Solved complex GTM and operating model problems across $50M–$1B businesses"
+- Key Wins: $2B+ transactions 20+ acquisitions, GTM/operating models, cross-functional strategy
+- What I Built: market/revenue models, operating model blueprints, execution roadmaps
 
-**BEEBOP** (orange) — Social Platform Founder · In Development
-- "Exploring how technology can enable more spontaneous real-world connections."
-- Leading a cross-functional team (PM, engineering, UX) to build a proximity-based social platform
-- Designing proximity-based social triggers and meetup facilitation features that bridge digital connections with real-world interactions
-- Conducting user research and interviews with target users to define MVP features and product direction
-- Running weekly product sprints to iterate on UX and feature design based on user feedback
+**BEEBOP** (orange) — Social Platform Founder · Nov 2025–Present
+- Summary: "Building a proximity-based social product to enable real-world connections"
+- Key Wins: MVP from zero, proximity-based concept, cross-functional execution
+- What I Built: 0→1 product/GTM strategy, user behavior models, rapid iteration system
 
 ### Fun Facts — Achievement Order (4 achievements)
+Each card: header strip (badge) + pixel icon + title + bullet points + photo strip (centered, `objectFit: cover`)
+
 1. **Running Enthusiast** | Stamina Achievement | PixelRunner (green)
-   - "Half Marathons · Ice Cream Runs · Halloween Runs. If there's a finish line, there's a reason to show up"
+   - "Ran half marathons, ice cream runs, and halloween runs"
+   - "Full marathon? Here I come!"
+   - Photos: running-nyc-half · running-icecream · running-halloween
+
 2. **Racket Sports Enthusiast** | Social Achievement | PixelTennis (blue #60a5fa)
-   - "Annual US Open attendee (as a spectator) · Hosted 50+ tennis club events in NYC over two years · Love all racket sports — table tennis, golf, badminton, but not pickleball"
+   - "Hosted 100+ tennis club events over 2.5 years for 50+ players"
+   - "Annual US Open attendee — as a passionate spectator"
+   - "Love all racket sports — table tennis, golf, badminton (but not pickleball)"
+   - Photos: racket-usopen · racket-tennis · racket-golf (`objectFit: contain`, height 180px)
+
 3. **Hawaii Sabbatical** | Explorer Achievement | PixelSun (yellow)
-   - "Unsustainable, unforgettable — whale watching at sunrise, jumping into the ocean on a whim, and eating poke & sushi until the sun went down. Some chapters weren't meant to last forever"
+   - "Month-long escape to Honolulu — traded spreadsheets for sunsets"
+   - "Certified poke & sushi connoisseur and obsessive local restaurant explorer"
+   - "Whale watching at sunrise, spontaneous ocean dives, and zero regrets"
+   - Photos: hawaii-whale · hawaii-snorkel (pos: center 30%) · hawaii-trail
+
 4. **Elite Warrior 특급전사** | Rare Achievement | PixelShield (red + gold star)
-   - "Served in the Korean Military as a tactical leader. Awarded the Elite Warrior 특급전사 medal for excellence — the highest individual combat-readiness distinction"
+   - "Served in the Korean Army — awarded the Elite Warrior 특급전사 medal, the highest individual combat-readiness distinction"
+   - "Attempted eggs sunny side up on a military shovel under questionable conditions — unsanitary, unsuccessful, never again 🍳"
    - h3 has `style={{ wordBreak: "keep-all" }}` so 특급전사 wraps as a whole word on mobile
+   - Photos: military-patch · military-troops · military-egg
+
+#### Photo data structure
+```ts
+photos: Array<{ src: string; pos?: string; fit?: string }>
+// pos defaults to "center", fit defaults to "cover"
+// racket-golf uses fit: "contain" + height 180px (to show full person)
+// hawaii-snorkel uses pos: "center 30%"
+```
+All photo assets in `public/fun/`.
+
+#### Click hints (About Me → Fun Facts scroll)
+- `showClickHint` state, triggered when `activeSection === "about"`, auto-dismiss after 4.5s
+- `👆 Click for more` text appears next to ▶ Background and ▶ Fun Facts labels
+- Animation: `opacity: [0,1,0,1,0,1,0.9,0.9,0]`, `duration: 4.5`, blinks 3x then fades
 
 ### Contact
 - Header: "[ Contact ]" (blue)
@@ -276,6 +332,8 @@ Strip background: `#1a1a2e` (opaque — prevents content bleeding through).
 11. **Jukebox autoplay blocked by browsers**: Using manual play/pause only. Do not attempt autoplay — browsers require user gesture.
 12. **Profile.jpg is case-sensitive**: Must be `Profile.jpg` (capital P) for Vercel Linux build. Do not rename to `profile.jpg`.
 13. **Desktop layout must not change**: All mobile fixes use `md:`, `lg:`, `max-md:` prefixes. Desktop (>1024px) is the master design.
+14. **scrollToId uses getBoundingClientRect**: Centers target element in viewport — `container.scrollTop + elTop - containerTop - containerH/2 + elH/2`. Do NOT use `offsetTop` alone (unreliable for nested elements).
+15. **Quest Log is single column**: Cards use `flex flex-col gap-8`, `max-w-3xl`. Do NOT revert to grid layout.
 
 ---
 
