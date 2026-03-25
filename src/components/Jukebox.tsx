@@ -143,7 +143,7 @@ export default function Jukebox() {
             exit={{ opacity: 0, scale: 0.95, x: "-50%", transition: { duration: 0.1 } }}
             transition={{
               scale:   { duration: 0.3 },
-              opacity: { duration: 2.0, times: [0, 0.02, 0.12, 0.22, 0.32, 0.42, 1], ease: "easeInOut" },
+              opacity: { duration: 2.5, times: [0, 0.05, 0.2, 0.4, 0.55, 0.7, 1], ease: "easeInOut" },
             }}
             className="font-pixel pixel-border px-4 py-3 md:px-8 md:py-5 text-base md:text-xl max-w-[90vw]"
             style={{
