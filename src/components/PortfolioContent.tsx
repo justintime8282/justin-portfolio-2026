@@ -793,12 +793,13 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
 
                 {/* Key Wins */}
                 <div className="mb-4 flex gap-3">
-                  <div className="shrink-0 pt-1">
-                    <span className="pixel-border block px-2 py-1 text-xs uppercase tracking-widest" style={{ color: quest.color, borderColor: quest.color }}>
-                      🔥 Key Wins
-                    </span>
+                  <div
+                    className="pixel-border w-20 shrink-0 flex items-center justify-center text-center text-xs uppercase tracking-widest"
+                    style={{ color: quest.color, borderColor: quest.color }}
+                  >
+                    🔥 Key Wins
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="flex-1 space-y-2">
                     {quest.keyWins.map((h, j) => (
                       <li key={j} className="flex gap-3 text-lg text-gray-300">
                         <span className="mt-1 shrink-0" style={{ color: quest.color }}>▸</span>
@@ -810,12 +811,13 @@ export default function PortfolioContent({ containerRef, activeSection }: Props)
 
                 {/* What I Built */}
                 <div className="flex gap-3">
-                  <div className="shrink-0 pt-1">
-                    <span className="pixel-border block px-2 py-1 text-xs uppercase tracking-widest" style={{ color: quest.color, borderColor: quest.color }}>
-                      ⚙️ Built
-                    </span>
+                  <div
+                    className="pixel-border w-20 shrink-0 flex items-center justify-center text-center text-xs uppercase tracking-widest"
+                    style={{ color: quest.color, borderColor: quest.color }}
+                  >
+                    ⚙️ Built
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="flex-1 space-y-2">
                     {quest.whatIBuilt.map((h, j) => (
                       <li key={j} className="flex gap-3 text-lg text-gray-300">
                         <span className="mt-1 shrink-0" style={{ color: quest.color }}>▸</span>
