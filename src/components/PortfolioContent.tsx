@@ -226,7 +226,7 @@ const quests = [
   {
     company: "BEEBOP",
     title: "Social Platform Founder",
-    period: "Since 2025 · Solo dev May 2025 · Full team Nov 2025",
+    period: "Nov 2025 – Present",
     summary: "Building a proximity-based social product to enable real-world connections",
     color: "#FFA500",
     icon: null,
@@ -396,7 +396,7 @@ function CopyEmailButton() {
 const bgEntries = [
   { id: "quest-advantive",   company: "Advantive",     role: "RevOps Lead", years: "2025–",       color: "#4ade80" },
   { id: "quest-eyparthenon", company: "EY-Parthenon",  role: "Director",    years: "2018–2024",   color: "#facc15" },
-  { id: "quest-beebop",      company: "Beebop",        role: "Founder",     years: "Since 2025",  color: "#FFA500" },
+  { id: "quest-beebop",      company: "Beebop",        role: "Founder",     years: "2025–",       color: "#FFA500" },
 ];
 
 const factEntries = [
